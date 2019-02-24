@@ -1,0 +1,9 @@
+# Judge if two strings equal #
+        s1 == s2
+
+# Traverse string #
+        s = "Hello"
+        for i in range(len(s)):
+                s[i]
+        for c in s:
+                c
