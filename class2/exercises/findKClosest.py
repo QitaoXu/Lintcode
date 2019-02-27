@@ -12,7 +12,7 @@ class Solution:
         if not A or target == None:
             return results
         
-        start, end = 0, len(A) - 1 
+        # start, end = 0, len(A) - 1 
         nums = A 
         
         right = self.find_upperCloset(nums, target)
