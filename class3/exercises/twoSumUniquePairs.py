@@ -16,7 +16,7 @@ class Solution:
         # nums = sorted(nums, key = lambda x:x[0])
         nums.sort()
         count = 0
-        results = []
+        # results = []
         
         while start < end: 
             
