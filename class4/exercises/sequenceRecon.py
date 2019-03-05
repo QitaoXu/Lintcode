@@ -8,10 +8,39 @@ class Solution:
     def sequenceReconstruction(self, org, seqs):
         # write your code here
         graph = self.build_graph(seqs)
-        topo_order = self.topological_sort(graph)
-        return topo_order == org
+        order = self.topo_sort(graph)
         
-    def topological_sort(self, graph):
+        if order == org:
+            return True 
+            
+        return False 
+        
+    def build_graph(self, seqs):
+        
+        graph = {} 
+        
+        for seq in  seqs:
+            for node in seq:
+                if node not in graph:
+                    graph[node] = set() 
+                    
+        for seq in seqs:
+            for i in range(1, len(seq)):
+                graph[seq[i - 1]].add(seq[i])
+                
+        return graph 
+        
+    def get_indegrees(self, graph):
+        
+        indegrees = { node : 0 for node in graph }
+        
+        for node in graph:
+            for neighbor in graph[node]:
+                indegrees[neighbor] += 1 
+                
+        return indegrees 
+        
+    def topo_sort(self, graph):
         
         indegrees = self.get_indegrees(graph)
         
@@ -21,7 +50,7 @@ class Solution:
             if indegrees[node] == 0:
                 queue.append(node)
                 
-        order = []
+        order = [] 
         
         while queue:
             
@@ -29,44 +58,23 @@ class Solution:
                 return None 
                 
             node = queue.popleft() 
+            
             order.append(node)
             
             for neighbor in graph[node]:
-                
                 indegrees[neighbor] -= 1 
                 
                 if indegrees[neighbor] == 0:
                     queue.append(neighbor)
-        
+                    
         if len(order) == len(graph):
             return order 
             
         return None 
-                
         
-    def build_graph(self, seqs):
         
-        graph = {} 
         
-        for seq in seqs:
-            for node in seq:
-                if node not in graph:
-                    graph[node] = set()
-                    
         
-        for seq in seqs:
-            for i in range(1, len(seq)):
-                graph[seq[i - 1]].add(seq[i])
         
-        return graph 
         
-    def get_indegrees(self, graph):
         
-        indegrees = {node : 0 for node in graph}
-        
-        for node in graph:
-            
-            for neighbor in graph[node]:
-                indegrees[neighbor] += 1 
-                
-        return indegrees
