@@ -24,7 +24,7 @@ class Solution:
             
             size = len(queue)
             
-            for i in range(size):
+            for _ in range(size):
                 
                 x, y = queue.popleft() 
                 

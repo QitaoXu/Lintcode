@@ -72,7 +72,7 @@ class Solution:
         
         while len(startQueue) and len(endQueue):
             
-            startSize, endSize = len (startQueue), len(endQueue)
+            # startSize, endSize = len (startQueue), len(endQueue)
             
             # for _ in range(startSize):
                 

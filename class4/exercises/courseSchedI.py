@@ -17,7 +17,7 @@ class Solution:
         start_courses = [ x for x in indegrees.keys() if indegrees[x] == 0]
         queue = deque(start_courses) 
         
-        count = 0 
+        # count = 0 
         order = []
         
         while queue:
