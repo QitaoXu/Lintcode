@@ -21,20 +21,38 @@ class Solution:
             
             s = queue.popleft() 
             
-            for sub in dict:
+            for successor in self.get_successors(s, dict):
                 
-                found = s.find(sub)
-                
-                while found != -1:
+                if successor not in seen:
                     
-                    new_s = s[: found] + s[found + len(sub):]
-                    
-                    if new_s not in seen:
-                        if len(new_s) < min_length:
-                            min_length = len(new_s)
-                            
-                        queue.append(new_s)
-                        seen.add(new_s)
+                    if len(successor) < min_length:
+                        min_length = len(successor)
                         
-                    found = s.find(sub, found + 1)
-        return min_length
+                    queue.append(successor)
+                    seen.add(successor)
+                    
+        return min_length            
+        
+    def get_successors(self, s, dict):
+            
+        successors = []
+            
+        for sub in dict:
+                
+            found = s.find(sub)
+                
+            while found != -1:
+                    
+                successor = s[: found] + s[found + len(sub) :]
+                
+                successors.append(successor)
+                
+                found = s.find(sub, found + 1)
+                
+        return successors
+            
+            
+        
+        
+            
+            
