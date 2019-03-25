@@ -15,35 +15,69 @@ class Solution:
     def mergeTwoInterval(self, list1, list2):
         # write your code here
         
-        for l in list2:
+        i, j = 0, 0
+        
+        results = []
+        
+        
+        if list1 is None and  list2 is None:
             
-            list1 = self.insertInterval(list1, l)
+            return results 
             
-        return list1
-        
-    def insertInterval(self, intervals, newInterval):
-        
-        index = 0 
-        
-        while index < len(intervals) and intervals[index].start < newInterval.start:
-            index += 1 
+        curt, last = None, None
             
-        intervals.insert(index, newInterval)
-        
-        answer = [] 
-        
-        last = None 
-        
-        for curr in intervals:
+        while i < len(list1) and j < len(list2):
             
-            if last is None or last.end < curr.start:
+            if list1[i].start < list2[j].start:
                 
-                answer.append(curr)
+                curt = list1[i]
                 
-                last = curr 
+                i += 1 
                 
             else:
                 
-                last.end = max(last.end, curr.end)
+                curt = list2[j]
                 
-        return answer
+                j += 1 
+                
+            last = self.merge(curt, last, results)
+            
+        while i < len(list1):
+            
+            curt = list1[i]
+            
+            last = self.merge(curt, last, results)
+            
+            i += 1 
+            
+        while j < len(list2):
+            
+            curt = list2[j]
+            
+            last = self.merge(curt, last, results)
+            
+            j += 1 
+            
+        if last is not None:
+            
+            results.append(last)
+            
+        return results
+            
+            
+        
+    def merge(self, curt, last, results):
+        
+        if last is None:
+            
+            return curt 
+            
+        if last.end < curt.start:
+            
+            results.append(last)
+            
+            return curt 
+            
+        last.end = max(last.end, curt.end)
+        
+        return last 
