@@ -24,3 +24,8 @@ class Solution:
             k_subset.append(i)
             self.combine_helper(n, k, i + 1, k_subset, results)
             k_subset.pop()
+
+solution = Solution()
+n, k = 4, 2
+print(solution.combine(n, k))
+
