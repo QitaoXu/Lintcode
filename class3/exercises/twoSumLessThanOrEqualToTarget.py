@@ -9,19 +9,20 @@ class Solution:
         
         if nums == None or len(nums) == 0:
             return 0 
-            
-        start, end = 0, len(nums) - 1
+        
+        left, right = 0, len(nums) - 1 
+        
+        count = 0 
         
         nums.sort()
-        count = 0
         
-        while start < end:
+        while left < right:
             
-            if nums[start] + nums[end] > target:
-                end -= 1 
+            if nums[left] + nums[right] <= target:
+                count += right - left
+                left += 1 
                 
             else:
-                count += end - start
-                start += 1 
-                
-        return count 
+                right -= 1 
+            
+        return count    

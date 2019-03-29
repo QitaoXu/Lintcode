@@ -4,14 +4,19 @@ class TwoSum:
     @return: nothing
     """
     def __init__(self):
-        self.count = {}
+        self.num_to_count = {}
         
     def add(self, number):
         # write your code here
-        if number in self.count.keys():
-            self.count[number] += 1 
+        
+        if number in self.num_to_count:
+            
+            self.num_to_count[number] += 1 
+            
         else:
-            self.count[number] = 1 
+            
+            self.num_to_count[number] = 1 
+        
         
 
     """
@@ -20,8 +25,11 @@ class TwoSum:
     """
     def find(self, value):
         # write your code here
-        for num in self.count.keys():
-            if value - num in self.count.keys() and (value - num != num or self.count[num] > 1):
+        
+        for num in self.num_to_count:
+            
+            if value - num in self.num_to_count and (value - num != num or self.num_to_count[num] > 1):
+                
                 return True 
                 
         return False 
