@@ -10,9 +10,19 @@ class Solution:
         
         encpt = ""
 
-        for i in range(len(msg)):
+        i = 0
+
+        while i < len(msg):
             
             c = msg[i]
+
+            if not c.isalpha() and not c.isdigit():
+
+                encpt += c  
+
+                i += 1
+
+                continue 
 
             if c.isalpha():
 
@@ -24,11 +34,20 @@ class Solution:
 
                     c = chr( (ord(c) + shift - ord('A')) % 26 + ord('A')  )
 
+                encpt += c  
+
+                i += 1
+
+                continue 
+
+
             if c.isdigit():
 
                 shift += int(c)
 
-            encpt += c  
+                encpt += c  
+
+                i += 1 
 
         return encpt
 
