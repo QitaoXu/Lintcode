@@ -40,7 +40,6 @@ class Solution:
 
                 continue 
 
-
             if c.isdigit():
 
                 shift += int(c)
