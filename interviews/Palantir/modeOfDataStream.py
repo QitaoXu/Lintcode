@@ -39,13 +39,11 @@ class HashHeap:
         else:
 
             item = (self.num_to_times[num], num)
-
             index = self.hash[item]
 
             del self.hash[item]
 
             self.num_to_times[num] += 1 
-
             self.heap[index] = (self.num_to_times[num], num)
 
             self.hash[(self.num_to_times[num], num)] = index 
