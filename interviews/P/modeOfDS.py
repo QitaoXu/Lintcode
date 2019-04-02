@@ -45,14 +45,12 @@ class HashHeap:
 
             self.num_to_times[num] += 1 
             self.heap[index] = (self.num_to_times[num], num)
-
             self.hash[(self.num_to_times[num], num)] = index 
 
             if index < self.size:
 
                 self._sift_up(index)
                 self._sift_down(index)
-
 
     def remove(self, item):
 
