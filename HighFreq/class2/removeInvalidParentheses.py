@@ -1,4 +1,13 @@
-results = [] 
+from collections import deque
+
+class Solution:
+    """
+    @param s: The input string
+    @return: Return all possible results
+    """
+    def removeInvalidParentheses(self, s):
+        # Write your code here
+        results = [] 
         
         if self.is_valid(s):
             
