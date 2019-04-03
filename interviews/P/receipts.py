@@ -71,6 +71,12 @@ class Solution:
             if not self.is_valid_timestamp_diff(points[pos_B_index][0], points[cur_A_index][0], maxium_diff):
 
                 break 
+            
+            if (points[cur_A_index][2] != points[pos_B_index][2]):
+
+                pos_B_index -= 1 
+
+                continue 
 
             results.append((points[cur_A_index], points[pos_B_index]))
 
@@ -91,6 +97,12 @@ class Solution:
             if not self.is_valid_timestamp_diff(points[pos_B_index][0], points[cur_A_index][0], maxium_diff):
 
                 break 
+
+            if (points[cur_A_index][2] != points[pos_B_index][2]):
+
+                pos_B_index += 1 
+
+                continue 
 
             results.append((points[cur_A_index], points[pos_B_index]))
 
