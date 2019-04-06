@@ -15,7 +15,7 @@ class Solution:
             
         result = [1, 2]
         
-        for i in range(3, n + 1):
+        for _ in range(3, n + 1):
             
             result.append(result[-1] + result[-2])
             
