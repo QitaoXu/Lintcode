@@ -3,7 +3,7 @@ class Solution:
     def __init__(self, msg, shift):
 
         self.msg = msg
-        self.shift = shift
+        # self.shift = shift
         self.is_reverse = False 
         self.shift_stack = []
         # self.shift_stack.append(shift)
