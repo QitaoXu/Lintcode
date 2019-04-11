@@ -3,7 +3,7 @@ class Solution:
     def __init__(self, msg, shift):
 
         self.msg = msg
-        self.shift = shift
+        # self.shift = shift
         self.encpt = self.encrypt(msg, shift)
 
     def encrypt(self, msg, shift):
