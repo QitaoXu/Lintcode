@@ -1,0 +1,10 @@
+<Use Case>
+
+    Initialize Board 
+    Initialize Users(incliuding space ship and all starting asteroids)
+    Control Spaceship
+        including fire, hit, move and rotate
+    Asteroid Genearation
+    Check Status
+
+</Use Case>
