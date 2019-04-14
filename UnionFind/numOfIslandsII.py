@@ -1,5 +1,3 @@
-from collections import deque 
-
 DIRECTIONS = [
     [0, 1], [0, -1], [1, 0], [-1, 0]
     ]
@@ -11,47 +9,12 @@ class Point:
         self.y = b
 """
 
-class Solution:
-    """
-    @param n: An integer
-    @param m: An integer
-    @param operators: an array of point
-    @return: an integer array
-    """
-    def numIslands2(self, n, m, operators):
-        # write your code here
+class UnionFind:
+    
+    def __init__(self):
         
-        results = [] 
-        island = set()
-        self.count = 0 
         self.father = {}
-        
-        for operator in operators:
-            
-            x, y = operator.x, operator.y
-            
-            if (x, y) in island:
-                
-                results.append(self.count)
-                
-                continue 
-            
-            island.add((x, y))
-            
-            self.father[(x, y)] = (x, y)
-            
-            self.count += 1 
-            
-            for dx, dy in DIRECTIONS:
-                
-                nx, ny = x + dx, y + dy 
-                
-                if (nx, ny) in island:
-                    self.union((x, y), (nx, ny))
-                    
-            results.append(self.count)
-            
-        return results
+        self.count = 0 
         
     def union(self, a, b):
         
@@ -61,16 +24,15 @@ class Solution:
         if root_a == root_b:
             
             return 
-            
-        self.father[root_b] = root_a
         
+        self.father[root_b] = root_a
         self.count -= 1 
         
     def find(self, point):
         
         path = [] 
         
-        while self.father[point] != point:
+        while point != self.father[point]:
             
             path.append(point)
             
@@ -81,19 +43,49 @@ class Solution:
             self.father[p] = point 
             
         return point 
-
         
+        
+        
+class Solution:
+    """
+    @param n: An integer
+    @param m: An integer
+    @param operators: an array of point
+    @return: an integer array
+    """
+    def numIslands2(self, n, m, operators):
+        # write your code here
+        
+        islands = set()
+        
+        results = []
+        
+        uf = UnionFind()
+        
+        for operator in operators:
+            
+            x, y = operator.x, operator.y
+            
+            if (x, y) in islands:
                 
+                results.append(uf.count)
                 
+                continue 
+            
+            islands.add((x, y))
+            
+            uf.father[(x, y)] = (x, y)
+            uf.count += 1 
+            
+            for dx, dy in DIRECTIONS:
                 
+                nx, ny = x + dx, y + dy 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                if (nx, ny) in islands:
+                    
+                    uf.union((x, y), (nx, ny))
+                    
+            results.append(uf.count)
+            
+        return results
                 
