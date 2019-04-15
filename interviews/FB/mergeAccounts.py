@@ -48,7 +48,7 @@ class Solution:
         
         email_to_ids = self.get_email_to_ids(accounts)
         
-        for email, ids in email_to_ids.items():
+        for _, ids in email_to_ids.items():
             
             root_id = ids[0]
             
