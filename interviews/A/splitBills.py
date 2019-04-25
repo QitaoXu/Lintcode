@@ -6,7 +6,9 @@ class Solution:
 
         avg = sum(paid.values) / n 
 
-        underpay = [] 
-        overpay = [] 
+        # underpay = [] 
+        # overpay = [] 
+
+        return avg
 
         
