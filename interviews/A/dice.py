@@ -12,7 +12,7 @@ class Solution:
 
         self.dfs(dices, 0, sides, combination, target, results, found)
 
-        return results 
+        return results
 
     def dfs(self, dices, start_index, sides, combination, target, results, found):
 
@@ -50,3 +50,4 @@ print(solution.findTarget(3, 5, 10))
 print(solution.findTarget(2, 3, 4))
 print(solution.findTarget(2, 4, 4))
 print(solution.findTarget(3, 4, 4))
+print(solution.findTarget(5, 3, 12))
