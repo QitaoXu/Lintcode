@@ -25,7 +25,7 @@ class Solution:
                 #
                 if tuple(sorted(combination)) not in found and len(combination) == dices: 
 
-                    results.append(combination.copy())
+                    results.append(combination[:])
                     found.add(tuple(sorted(combination)))
                 
             return 
