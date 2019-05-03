@@ -12,7 +12,7 @@ class ListNode(object):
     def __init__(self, val, next=None):
         self.val = val
         self.next = next
-        
+
 class Solution:
     """
     @param lists: a list of ListNode
@@ -129,7 +129,7 @@ class Solution:
                 
         while heap:
             
-            val, cnt, node = heappop(heap)
+            _, __, node = heappop(heap)
             
             l.next = node 
             l = l.next 
