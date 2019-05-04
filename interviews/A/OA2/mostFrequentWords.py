@@ -1,4 +1,3 @@
-import re 
 class Solution:
     """
     @param s: a string
@@ -8,25 +7,33 @@ class Solution:
     def frequentWord(self, s, excludewords):
         # Write your code here
         
-        s = " " + s 
+        s = s.lower() + "."
         
-        word_list = re.findall(r"\b\S+\b", s)
-        
-        ans = {} 
+        word_to_count = {}
         max_count = 0 
         max_word = ""
         
-        for word in word_list:
-            if word not in excludewords:
+        word = ""
+        
+        for c in s:
+            
+            if c.isalpha():
+                word += c 
                 
-                ans[word] = ans.get(word, 0) + 1 
+            elif len(word) > 0:
                 
-                if ans[word] > max_count:
-                    max_count = ans[word]
-                    max_word = word 
-                
-                elif ans[word] == max_count:
-                    if word < max_word:
-                        max_word = word 
+                if word not in excludewords:
+                    
+                    word_to_count[word] = word_to_count.get(word, 0) + 1 
+                    
+                    if word_to_count[word] > max_count:
+                        max_word = word
+                        max_count = word_to_count[word]
                         
+                    if word_to_count[word] == max_count:
+                        if word < max_word:
+                            max_word = word 
+                            
+                word = ""
+                
         return max_word
