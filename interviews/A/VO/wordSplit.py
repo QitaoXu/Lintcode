@@ -56,7 +56,7 @@ class MemoSolution:
         if string in memo:
             return memo[string]
 
-        if  len(string) == 0:
+        if len(string) == 0:
 
             return []
 
