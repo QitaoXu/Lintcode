@@ -41,7 +41,7 @@ class Elevator:
         self.buttons = []
         self.upStops = []
         self.downStops = []
-        for i in range(n):
+        for _ in range(n):
             self.upStops.append(False)
             self.downStops.append(False)
         self.currLevel = 0
