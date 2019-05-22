@@ -32,7 +32,7 @@ class Bus(Vehicle):
 class Ticket:
     def __init__(self, vehicle, spots):
 
-        self.vehcile = vehicle 
+        self.vehicle = vehicle 
         self.spots = spots 
         self.startTime = datetime.datetime.now()
 
