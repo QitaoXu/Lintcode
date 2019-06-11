@@ -93,7 +93,7 @@ class Solution:
 
     def dijkstra(self, graph, edge_to_weight):
 
-        d = {i : max(edge_to_weight.values()) + 1 for i in range(1, len(graph) + 1)}
+        d = {i : 2 ** 31 - 1 for i in range(1, len(graph) + 1)}
         # prev = {i : None for i in range(1, len(graph) + 1)}
 
         d[1] = 0 
