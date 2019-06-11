@@ -95,7 +95,7 @@ class Solution:
     def dijkstra(self, graph, edge_to_weight):
 
         d = {i : 2 ** 31 - 1 for i in range(1, len(graph) + 1)}
-        # prev = {i : None for i in range(1, len(graph) + 1)}
+        prev = {i : None for i in range(1, len(graph) + 1)}
 
         d[1] = 0 
         S = set([1])
@@ -110,15 +110,14 @@ class Solution:
 
         while Q:
             # print(Q)
-            _, __, u = heappop(Q)
+            _, parent, u = heappop(Q)
+            prev[u] = parent
 
             if u not in S:
                 S.add(u)
 
                 for v in graph[u]:
-
-                    if d.get(v) != 2**31 - 1:
-
+                    if Qd.get(v):
                         edge = (u, v) 
 
                         if d[v] > d[u] + edge_to_weight[edge]:
