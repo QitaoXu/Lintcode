@@ -1,4 +1,5 @@
-from heapq import heappush, heappop
+from heapq import heappush, heappop, _siftdown
+
 
 class Solution:
 
@@ -9,7 +10,7 @@ class Solution:
 
         shortest_dis = self.dijkstra(graph, edge_to_weight)
 
-        # print(shortest_dis)
+        print(shortest_dis)
 
         results = [] 
 
@@ -97,24 +98,40 @@ class Solution:
         # prev = {i : None for i in range(1, len(graph) + 1)}
 
         d[1] = 0 
-        S = set()
+        S = set([1])
 
-        Q = [] 
-        for node in graph:
-            heappush(Q, (d[node], node))
+        Q = []
+        Qd = {} 
+        for v in graph[1]:
+            d[v] = edge_to_weight[(1, v)]
+            item = [d[v], 1, v]
+            heappush(Q, item)
+            Qd[v] = item 
 
         while Q:
+            # print(Q)
+            _, __, u = heappop(Q)
 
-            _, u = heappop(Q)
+            if u not in S:
+                S.add(u)
 
-            S.add(u)
+                for v in graph[u]:
 
-            for v in graph[u]:
-                edge = (u, v) 
+                    if d.get(v) != 2**31 - 1:
 
-                if d[v] > d[u] + edge_to_weight[edge]:
-                    d[v] = d[u] + edge_to_weight[edge]
+                        edge = (u, v) 
 
+                        if d[v] > d[u] + edge_to_weight[edge]:
+                            d[v] = d[u] + edge_to_weight[edge]
+                            Qd[v][0] = d[v]
+                            Qd[v][1] = u 
+                            _siftdown(Q, 0, Q.index(Qd[v]))
+
+                    else:
+                        d[v] = d[u] + edge_to_weight[(u, v)]
+                        item = [d[v], u, v]
+                        heappush(Q, item)
+                        Qd[v] = item 
         return d 
 
 
