@@ -32,6 +32,9 @@ class Solution:
 
         for neighbor in graph[cur]:
 
+            if cur_cost + edge_to_weight[(cur, neighbor)] > shortest_dis[neighbor]:
+                continue 
+
             if cur_cost + edge_to_weight[(cur, neighbor)] > shortest_dis[end]:
                 continue 
 
