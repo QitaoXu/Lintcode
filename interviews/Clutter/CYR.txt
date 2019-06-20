@@ -19,7 +19,7 @@ class Solution:
 
             self.getAllPaths(graph, edgeWeights, shortestDistances, start, cost, target, path, paths) 
 
-        return self.normalizePaths(sources, destinations, paths)
+        return self.normalizePaths(sources, destinantions, paths)
 
     def normalizePaths(self, sources, destinantions, paths):
 
