@@ -43,7 +43,7 @@ phrases = [
     'mission statement',
     'a quick bite to eat',
     'a chip off the old block',
-    'chololate bar',
+    'chocolate bar',
     'mission impossible',
     'a man on a mission',
     'block party',
