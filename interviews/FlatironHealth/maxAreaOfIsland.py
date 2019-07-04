@@ -75,9 +75,51 @@ class Solution:
             
         return True 
         
+class Solution2:
+    def maxAreaOfIsland(self, grid):
         
+        if not grid or not grid[0]:
+            return 0 
         
+        m, n = len(grid), len(grid[0]) 
         
+        max_area = 0 
+        
+        for i in range(m):
+            for j in range(n):
+                
+                if grid[i][j] == 0:
+                    continue 
+                    
+                max_area = max(max_area, self.dfs(grid, i, j, 1) ) 
+                
+        return max_area 
+    
+    def dfs(self, grid, x, y, count):
+        
+        grid[x][y] = 0 
+        
+        for dx, dy in DIRECTIONS:
+            nx, ny = x + dx, y + dy 
+            
+            if not self.isValid(grid, nx, ny):
+                continue 
+                
+            count = 1 + self.dfs(grid, nx, ny, count)
+            
+        return count 
+    
+    def isValid(self, grid, x, y):
+        
+        m, n = len(grid), len(grid[0]) 
+        
+        if x < 0 or x >= m or y < 0 or y >= n:
+            return False 
+        
+        if grid[x][y] == 0:
+            return False 
+        
+        return True         
         
         
         
