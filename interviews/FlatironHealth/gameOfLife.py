@@ -14,9 +14,11 @@ class Solution:
                 lives = self.getNeighborLives(board, i, j) 
                 
                 if board[i][j] == 0 and lives == 3:
+                    # 10 current state is dead and next state is live 
                     board[i][j] = 2 
                     
                 if board[i][j] == 1 and lives >= 2 and lives <= 3:
+                    # 11 current state is live and next state is live 
                     board[i][j] = 3 
                     
         for i in range(m):
