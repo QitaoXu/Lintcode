@@ -2,6 +2,7 @@ from collections import deque
 
 DIRECTIONS = [(-1, 0), (0, -1), (1, 0), (0, 1)] 
 
+# BFS
 class Solution:
     """
     @param grid: a 2D array
@@ -74,7 +75,8 @@ class Solution:
             return False 
             
         return True 
-        
+
+# DFS        
 class Solution2:
     def maxAreaOfIsland(self, grid):
         
@@ -121,6 +123,77 @@ class Solution2:
         
         return True         
         
+# BFS without changing original grid       
+class Solution3:
+    def maxAreaOfIsland(self, grid):
         
+        max_area = 0
         
+        if not grid or not grid[0]:
+            return max_area 
+        
+        m, n = len(grid), len(grid[0]) 
+        visited = [[False for _ in range(n)] for _ in range(m)] 
+        
+        for i in range(m):
+            for j in range(n):
+                
+                if grid[i][j] == 0:
+                    continue 
+                    
+                if visited[i][j] == True:
+                    continue 
+                    
+                island_area = self.bfs(grid, i, j, visited) 
+                
+                max_area = max(max_area, island_area) 
+                
+        return max_area 
+    
+    def bfs(self, grid, x, y, visited):
+        
+        queue = deque()
+        seen = set() 
+        
+        queue.append((x, y))
+        seen.add((x, y)) 
+        visited[x][y] = True  
+        
+        while queue:
+            
+            size = len(queue) 
+            
+            for _ in range(size):
+                
+                cx, cy = queue.popleft()
+                
+                for dx, dy in DIRECTIONS:
+                    
+                    nx, ny = cx + dx, cy + dy 
+                    
+                    if not self.is_valid(grid, nx, ny, visited):
+                        continue 
+                        
+                    queue.append((nx, ny))
+                    seen.add((nx, ny))
+                     
+                    visited[nx][ny] = True 
+                    
+        return len(seen) 
+    
+    def is_valid(self, grid, x, y, visited):
+        
+        m, n = len(grid), len(grid[0]) 
+        
+        if x < 0 or x >= m or y < 0 or y >= n:
+            return False 
+        
+        elif grid[x][y] == 0:
+            return False 
+        
+        elif visited[x][y] == True:
+            return False 
+        
+        else:
+            return True      
         

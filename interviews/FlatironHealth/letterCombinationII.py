@@ -60,6 +60,29 @@ class Trie:
 
         return node != None 
 
+
+    def getAllWords(self):
+
+        allWords = [] 
+
+        self.getAllWordsHelper(self.root, "", allWords) 
+
+        return allWords 
+
+    def getAllWordsHelper(self, root, string, results):
+
+        if len(root.children) == 0:
+
+            if len(string) > 0:
+                results.append(string)
+
+            return 
+
+        for child in root.children:
+
+            self.getAllWordsHelper(root.children[child], string + child, results) 
+
+
 class Solution:
     def letterCombinations(self, digits, dictionary):
         
@@ -98,4 +121,11 @@ class Solution:
             
         
         
-        
+words = ["hello", "ets", "gre"] 
+
+prefixTree = Trie() 
+
+for word in words:
+    prefixTree.insert(word) 
+
+print(prefixTree.getAllWords()) 

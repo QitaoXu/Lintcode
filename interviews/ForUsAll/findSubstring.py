@@ -8,6 +8,7 @@ class Trie:
 
     def __init__(self):
         self.root = TrieNode() 
+        self.words_num = 0 
 
     def insert(self, word):
 
@@ -22,6 +23,8 @@ class Trie:
             node = node.children[c] 
 
         node.isWord = True 
+
+        self.words_num += 1 
 
     def find(self, word):
 
@@ -68,7 +71,7 @@ class Solution:
                 prefixTree.insert(substring) 
                 substrings.append(substring) 
 
-        return substrings 
+        return substrings, prefixTree.words_num
 
 
 solution = Solution() 
