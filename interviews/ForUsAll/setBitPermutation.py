@@ -17,7 +17,7 @@ class Solution:
         if setBitNum == 0:
 
             permutation = permutation[::-1] 
-            results.append(self.bitsToNum(permutation.copy())) 
+            results.append(self.bitsToNum(permutation))
             return 
 
         if index == 32 or 32 - index < setBitNum:
@@ -43,4 +43,4 @@ class Solution:
 
 solution = Solution() 
 
-print(solution.setBitPermutation(32))   
+print(solution.setBitPermutation(1))   
