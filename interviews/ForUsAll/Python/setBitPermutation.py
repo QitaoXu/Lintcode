@@ -1,4 +1,25 @@
+class SetBits:
+
+    BitsSetTable = [0 for _ in range(256)] 
+
+    for i in range(256):
+        BitsSetTable[i] = (i & 1) + BitsSetTable[i // 2] 
+
+    @classmethod
+    def lookUp(self, num):
+
+        return SetBits.BitsSetTable[num & 0xFF] +\
+            SetBits.BitsSetTable[(num >> 8) & 0xFF] +\
+            SetBits.BitsSetTable[(num >> 16) & 0xFF] +\
+            SetBits.BitsSetTable[(num >> 24) & 0xFF] 
+
 class Solution:
+
+    def findAllSetBitPermutationNum(self, num):
+
+        setBitNum = SetBits.lookUp(num) 
+
+        return self.setBitPermutation(setBitNum) 
 
     def setBitPermutation(self, setBitNum):
 
@@ -43,4 +64,4 @@ class Solution:
 
 solution = Solution() 
 
-print(solution.setBitPermutation(1))   
+print(solution.findAllSetBitPermutationNum(8))    

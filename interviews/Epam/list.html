@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sample Title</title>
+    </head>
+
+    <body>
+
+        <ul id="favorites">
+
+        </ul>
+
+        <input type="text" id="new_fav" name="new_fav">
+        <button onclick="add">add</button>
+
+        <script>
+
+            var favorites = []; 
+
+            function add(new_fav){
+
+                favorites.push(new_fav) 
+
+                document.getElementById('favorites').innerHTML + '<li>' + new_fav + '</li>'; 
+            }
+
+        </script>
+    </body>
+</html>
