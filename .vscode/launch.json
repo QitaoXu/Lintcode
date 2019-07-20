@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - MiniCalendar",
+            "request": "launch",
+            "mainClass": "MiniCalendar"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - LargestPlusSign",
             "request": "launch",
             "mainClass": "LargestPlusSign"
