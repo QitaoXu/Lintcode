@@ -15,10 +15,26 @@ public class BasicCalculatorII {
         Stack<Integer> stack = new Stack<>(); 
         
         for (int i = 0; i < len; i++) {
+            if ( s.charAt(i) == '(' ) {
+                
+                i += 2;
+                while(Character.isDigit(s.charAt(i))) {
+                    num = num * 10 + s.charAt(i) - '0';
+                    i += 1;
+                }
+                
+                num = -num;
+                i -= 1;
+                continue;
+            }
+            
+            if ( Character.isDigit(s.charAt(i)) ) {
+                num = num * 10 + s.charAt(i) - '0';
+            }
             
             if (Character.isDigit(s.charAt(i))) num = num * 10 + s.charAt(i) - '0';// digit
             
-            if ( (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ') || i == len - 1) {
+            if ( (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ') || i == len - 1 || s.charAt(i) == ')') {
                 
                 if (sign == '-') stack.push(-num);
                 
