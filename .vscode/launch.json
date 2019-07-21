@@ -6,6 +6,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ConnectingGraph",
+            "request": "launch",
+            "mainClass": "ConnectingGraph"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MinIntersectionToFormPalin",
+            "request": "launch",
+            "mainClass": "MinIntersectionToFormPalin"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LCS",
+            "request": "launch",
+            "mainClass": "LCS"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - NumDiff",
             "request": "launch",
             "mainClass": "NumDiff"
