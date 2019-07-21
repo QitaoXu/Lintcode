@@ -1,3 +1,4 @@
+import java.util.*;
 public class TicTacToe {
 
     private char[][] board;
@@ -27,7 +28,7 @@ public class TicTacToe {
 
             throw new GameEndException();
         }
-        
+
         if (this.board[row][col] != ' ') {
 
             throw new AlreadyTakenException();
