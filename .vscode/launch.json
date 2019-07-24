@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - UnixSum",
+            "request": "launch",
+            "mainClass": "UnixSum"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - SubsetOfCapacity",
             "request": "launch",
             "mainClass": "SubsetOfCapacity"
