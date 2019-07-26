@@ -32,6 +32,12 @@ class LRUCache:
         self.tail.next = node 
         
         self.tail = self.tail.next 
+
+    def serialize(self):
+        pass 
+
+    def deserialize(self):
+        pass 
         
     
     # head -> ... -> prev -> node -> node.next -> ... -> None 
@@ -132,7 +138,7 @@ class LRUCache:
     def delete(self, key):
 
         if key not in self.key_to_prev:
-            return 
+            return False
 
         prev = self.key_to_prev[key] 
 
@@ -150,5 +156,6 @@ class LRUCache:
 
             self.tail = prev 
 
+        return True 
 
 
