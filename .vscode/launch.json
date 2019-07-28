@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - RemoveInvalidParentheses",
+            "request": "launch",
+            "mainClass": "RemoveInvalidParentheses"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - UnixSum",
             "request": "launch",
             "mainClass": "UnixSum"
