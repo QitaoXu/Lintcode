@@ -34,7 +34,8 @@ public class GraphHasCycle {
             count += 1;
         }
 
-        return !(count == graph.size());
+        if (count != graph.size()) return true;
+        else return false;
         
     }
 
