@@ -69,7 +69,7 @@ public class TicTacToe {
 
     private boolean isBoardFull() {
 
-        boolean isFull = false;
+        // boolean isFull = false;
 
         for (int i = 0; i < this.n; i++) {
 
