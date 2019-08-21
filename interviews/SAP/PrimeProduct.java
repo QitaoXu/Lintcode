@@ -5,12 +5,10 @@ public class PrimeProduct {
     public static void main(String[] args) {
 
         PrimeProduct pp = new PrimeProduct();
-
         int n = 80; 
-
         int product = 4819; 
 
-        int[] res = pp.getProductPrime(product, pp.getPrimrNumbers(n));
+        int[] res = pp.getProductMultiples(product, pp.getPrimrNumbers(n));
 
         for (int number : res) {
             System.out.println(number);
@@ -18,7 +16,7 @@ public class PrimeProduct {
 
     }
 
-    public int[] getProductPrime(int product, List<Integer> primeNums) {
+    public int[] getProductMultiples(int product, List<Integer> primeNums) {
 
         int start = 0, end = primeNums.size() - 1; 
         int[] res = {-1, -1};
