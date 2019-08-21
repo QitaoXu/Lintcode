@@ -94,7 +94,7 @@ for line in sys.stdin:
     h = int(line)
     break 
 
-print(garden.canArrange(board, 1, 1)) 
+print(garden.canArrange(board, s, h)) 
 
 
 
