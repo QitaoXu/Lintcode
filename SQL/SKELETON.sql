@@ -250,3 +250,99 @@ GROUP BY
     1 
 ;
 
+# IN function  
+# number of rentals in the comedies, sports and family 
+SELECT 
+    c.name AS category, COUNT(r.rental_id) AS "Number of Rentals"
+FROM 
+    rental r, inventory i, film f, film_category fc, category c 
+WHERE 
+    r.inventory_id = i.inventory_id
+    AND i.film_id = f.film_id 
+    AND f.film_id = fc.film_id 
+    AND fc.category_id = c.category_id 
+    AND c.name IN ("Comedy", "Sports", "Family")
+GROUP BY 
+    1
+;
+
+# Comparison Operators (>, =)
+# HAVING
+# Users who have rented at least 3 times 
+SELECT 
+    r.customer_id AS customer, count(r.rental_id) AS "Number of Rentals"
+FROM 
+    rental r
+GROUP BY 
+    1
+HAVING 
+    count(r.rental_id) >= 3 
+ORDER BY 
+    count(r.rental_id) desc 
+;
+
+# How much Revenue has a single store made over PG-13 and R-rated films 
+SELECT 
+    i.store_id as Store, f.rating AS "Movie Rating", SUM(p.amount) AS "Revenue of PG-13 and R"
+FROM 
+    rental r, inventory i, film f, payment p
+WHERE 
+    r.inventory_id = i.inventory_id
+    AND i.store_id = 1
+    AND i.film_id = f.film_id 
+    AND r.rental_id = p.rental_id
+    AND f.rating IN ('PG-13', 'R')
+GROUP BY 
+    1, 2
+ORDER BY 
+    3 desc
+;
+
+SELECT 
+    i.store_id as Store, f.rating AS "Movie Rating", SUM(p.amount) AS "Revenue of PG-13 and R"
+FROM 
+    rental r, inventory i, film f, payment p
+WHERE 
+    r.inventory_id = i.inventory_id
+    AND i.store_id = 1
+    AND i.film_id = f.film_id 
+    AND r.rental_id = p.rental_id
+    AND f.rating IN ('PG-13', 'R')
+    AND r.rental_date between '2005-06-08' AND '2005-07-09'
+GROUP BY 
+    1, 2
+ORDER BY 
+    3 desc
+;
+
+# Nested Queries
+SELECT 
+    rpc.num_rentals, 
+    COUNT(distinct rpc.customer_id) as num_customers, 
+    SUM(p.amount) as total_rev
+FROM 
+    (SELECT 
+        r.customer_id, COUNT(r.rental_id) AS num_rentals
+    FROM 
+        rental r
+    GROUP BY 
+        1
+    ) AS rpc, 
+    payment p 
+WHERE 
+    rpc.customer_id = p.customer_id
+    AND rpc.num_rentals > 20
+GROUP BY 
+    1
+;
+
+SELECT 
+
+FROM 
+
+WHERE 
+
+GROUP BY 
+
+;
+
