@@ -363,13 +363,4 @@ GROUP BY
     
 
 
-SELECT 
-
-FROM 
-
-WHERE 
-
-GROUP BY 
-
-;
 
