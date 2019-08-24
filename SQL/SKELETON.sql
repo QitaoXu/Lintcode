@@ -336,6 +336,33 @@ GROUP BY
     1
 ;
 
+# temporay tables 
+# rentals per customer
+create temporary table rpc as 
+SELECT 
+    r.customer_id, COUNT(r.rental_id) AS num_rentals
+FROM 
+    rental r
+GROUP BY 
+    1
+;
+
+SELECT 
+    rpc.num_rentals, 
+    COUNT(distinct rpc.customer_id) as num_customers, 
+    SUM(p.amount) as total_rev
+FROM 
+    rpc, 
+    payment p 
+WHERE 
+    rpc.customer_id = p.customer_id
+    AND rpc.num_rentals > 20
+GROUP BY 
+    1
+;
+    
+
+
 SELECT 
 
 FROM 
